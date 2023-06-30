@@ -3,7 +3,10 @@ if not lsp_status then
   return
 end
 
-local lspconfig_status,lspconfig = pcall(require, "lspconfig") 
+local lspconfig_status,lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+  return
+end
 
 local lsp = lsp_zero.preset({})
 
@@ -38,6 +41,7 @@ lspconfig.tsserver.setup{{     -- TODO
   end
 }}
 
+-- eslint
 lspconfig.eslint.setup({
   single_file_support = false,
   on_attach = function(client, bufnr)
@@ -71,7 +75,7 @@ lspconfig.html.setup({
 
 -- ******* format-on-save *************** TODO
 -- lsp.format_on_save({
---   format_opts = {
+--   format_opts = {,
 --     async = false,
 --     timeout_ms = 10000,
 --   },

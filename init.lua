@@ -13,3 +13,5 @@ require("rasoach.core.colorizer")
 
 require("rasoach.lsp.mason")
 require("rasoach.lsp")
+require("rasoach.cmp")
+
