@@ -12,6 +12,8 @@ require("rasoach.core.auto-close")
 require("rasoach.core.colorizer")
 
 require("rasoach.lsp.mason")
-require("rasoach.lsp")
-require("rasoach.cmp")
+-- require("rasoach.lsp")
+require("rasoach.lsp.init-test")
+require("rasoach.lsp.null-ls")
+require("rasoach.cmp.cmp")
 

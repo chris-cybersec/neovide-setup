@@ -69,24 +69,25 @@ lspconfig.cssls.setup({
 lspconfig.html.setup({
   single_file_support = false,
   on_attach = function (client, bufnr)
-    print("hello html")
+    print("hello html"         )
   end
 })
 
 -- ******* format-on-save *************** TODO
--- lsp.format_on_save({
---   format_opts = {,
---     async = false,
---     timeout_ms = 10000,
---   },
---   servers = {
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+
+  servers = {
 --     ['lua_ls'] = {'lua'},
 --     ['rust_analyzer'] = {'rust'},
 --     -- if you have a working setup with null-ls
 --     -- you can specify filetypes it can format.
---     -- ['null-ls'] = {'javascript', 'typescript'},
---   }
--- })
+    ['null-ls'] = {'javascript', 'typescript', "scss", "css"}
+  }
+})
 
 lsp.setup()
 
