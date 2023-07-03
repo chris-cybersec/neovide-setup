@@ -8,7 +8,13 @@ if not lspconfig_status then
   return
 end
 
-local lsp = lsp_zero.preset({})
+local lsp = lsp_zero.preset({
+  -- manage sources completion
+  -- ref: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/autocomplete.md#introduction
+   manage_nvim_cmp = {
+    set_sources = 'recommended'
+  }
+})
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
@@ -74,18 +80,23 @@ lspconfig.html.setup({
 })
 
 -- ******* format-on-save *************** TODO
+lsp.format_mapping('gq', {
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['null-ls'] = {'javascript', 'typescript', 'lua'},
+  }
+})
+
 lsp.format_on_save({
   format_opts = {
     async = false,
     timeout_ms = 10000,
   },
-
   servers = {
---     ['lua_ls'] = {'lua'},
---     ['rust_analyzer'] = {'rust'},
---     -- if you have a working setup with null-ls
---     -- you can specify filetypes it can format.
-    ['null-ls'] = {'javascript', 'typescript', "scss", "css"}
+    ['null-ls'] = {'javascript', 'typescript', 'lua'},
   }
 })
 

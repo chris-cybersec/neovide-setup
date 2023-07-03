@@ -3,9 +3,11 @@ if not status then
   return
 end
 
+local builtins = null_ls.builtins
+
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.prettier,
-    null_ls.builtins.formatting.stylua
+    builtins.formatting.prettier,
+    -- builtins.formatting.stylua
   }
 })

@@ -16,12 +16,14 @@ local cmp_action = lsp_zero.cmp_action()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
+--mapping
 -- enable supertab
   mapping = {
     ['<Tab>'] = cmp_action.luasnip_supertab(),
     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
   },
 
+-- sources
   sources = {
     {name = "luasnip", keyword_length = 2},
     {name = "nvim_lsp"},
@@ -35,10 +37,17 @@ cmp.setup({
     end
   },
 
+-- ui
+window = {
+  documentation = {
+    max_height = 60,
+    max_width = 60
+  }
+},
+
+-- formatting
   formatting = {
     fields = {"menu", "abbr", "kind"},
-
-        -- here is where the change happens
     format = function(entry, item)
       local menu_icon = {
         nvim_lsp = 'λ',
@@ -47,9 +56,12 @@ cmp.setup({
         path = '🖫',
         nvim_lua = 'Π',
       }
-
-      item.menu = menu_icon[entry.source.name]
+    item.menu = menu_icon[entry.source.name]
       return item
     end,
-  }
+  },
+
+--
+
+
 })
