@@ -47,6 +47,9 @@ return packer.startup(function(use)
   use ("wbthomason/packer.nvim") --packer
   use ("nvim-lua/plenary.nvim")
 
+-- wakatime
+  use('wakatime/vim-wakatime')
+
 -- icons
   use("nvim-tree/nvim-web-devicons")
 
@@ -87,19 +90,20 @@ return packer.startup(function(use)
   )
 
 -- nvim-cmp
-  -- use ('neovim/nvim-lspconfig')
+  use ('hrsh7th/nvim-cmp')
   use ('hrsh7th/cmp-buffer')
   use ('hrsh7th/cmp-path')
-  -- use ('hrsh7th/cmp-cmdline')
-  --
-  -- use ('L3MON4D3/LuaSnip')
-  -- use ('hrsh7th/nvim-cmp')
   use ('hrsh7th/cmp-nvim-lsp')
   use ('saadparwaiz1/cmp_luasnip')
 
 -- snippets
   use("rafamadriz/friendly-snippets")
 
+-- luasnip
+  use({"L3MON4D3/LuaSnip",
+      tag = "v1.2.1",
+      run = "make install_jsregex"
+  })
 
 -- lsp-zero
 use {
